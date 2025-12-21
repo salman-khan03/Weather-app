@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "env": [
+    {
+      "key": "NEXT_PUBLIC_OPENWEATHER_API_KEY",
+      "description": "OpenWeather API Key",
+      "value": "",
+      "type": "secret"
+    },
+    {
+      "key": "NEXT_PUBLIC_GOOGLE_PLACES_API_KEY",
+      "description": "Google Places API Key (optional)",
+      "value": "",
+      "type": "secret"
+    },
+    {
+      "key": "NEXT_PUBLIC_SUPABASE_URL",
+      "description": "Supabase Project URL",
+      "value": "",
+      "type": "secret"
+    },
+    {
+      "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "description": "Supabase Anon Key",
+      "value": "",
+      "type": "secret"
+    },
+    {
+      "key": "ANTHROPIC_API_KEY",
+      "description": "Anthropic API Key for Claude AI",
+      "value": "",
+      "type": "secret"
+    },
+    {
+      "key": "NEXT_PUBLIC_APP_URL",
+      "description": "Application URL",
+      "value": "",
+      "type": "secret"
+    }
+  ],
+  "buildSettings": {
+    "skipGitChecks": false
+  }
+}

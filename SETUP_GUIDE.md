@@ -39,14 +39,13 @@ npm install
 4. Copy your API key (you'll use it in Step 6)
 5. Note: Free tier includes current weather and forecast
 
-### Anthropic (Claude AI) API Key
+### Google Gemini AI API Key
 
-1. Go to [https://console.anthropic.com](https://console.anthropic.com)
-2. Sign up for an account
-3. Navigate to "API Keys" in the settings
-4. Create a new API key
-5. Copy and save it securely (you'll use it in Step 6)
-6. Set up billing to avoid service interruptions
+1. Go to [Google AI Studio](https://aistudio.google.com)
+2. Click "Get API Key" button
+3. Create a new API key or select existing one
+4. Copy and save it securely (you'll use it in Step 6)
+5. The free tier includes generous usage limits for testing
 
 ### Google Places API Key (Optional)
 
@@ -106,7 +105,7 @@ NEXT_PUBLIC_OPENWEATHER_API_KEY=your_openweather_api_key_here
 NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=your_google_api_key_here (optional)
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
+NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY=your_google_gemini_api_key_here
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -143,7 +142,7 @@ http://localhost:3000
 
 ### Test AI Insights
 1. Click "Generate AI Insight" button
-2. Wait for Claude AI to generate insights
+2. Wait for Google Gemini AI to generate insights
 3. You should see weather analysis and suggestions
 
 ### Test Responsive Design
@@ -207,7 +206,7 @@ In your Vercel project settings:
    - `NEXT_PUBLIC_OPENWEATHER_API_KEY`
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `ANTHROPIC_API_KEY`
+   - `NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY`
    - `NEXT_PUBLIC_APP_URL` (set to your Vercel domain)
 
 3. Redeploy after adding variables
@@ -237,10 +236,10 @@ In your Vercel project settings:
 
 ### Issue: AI insights not generating
 **Solution**:
-- Verify Anthropic API key is correct
-- Check API key has billing set up
+- Verify Google Gemini API key is correct
+- Ensure Gemini API is enabled in your Google Cloud project
 - Look at browser console for error messages
-- Wait 30 seconds for first call (may need timeout)
+- Check you have quota remaining in Google AI Studio
 
 ### Issue: Geolocation not working
 **Solution**:

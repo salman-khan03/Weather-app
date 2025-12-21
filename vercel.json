@@ -30,8 +30,8 @@
       "type": "secret"
     },
     {
-      "key": "ANTHROPIC_API_KEY",
-      "description": "Anthropic API Key for Claude AI",
+      "key": "NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY",
+      "description": "Google Gemini API Key",
       "value": "",
       "type": "secret"
     },

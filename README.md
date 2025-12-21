@@ -5,7 +5,7 @@ A modern, full-stack weather application built with React, TypeScript, Tailwind 
 ## Features
 
 - 🌤️ **Real-time Weather Data** - Get accurate weather forecasts using OpenWeather API
-- 🤖 **AI-Powered Insights** - Claude AI generates personalized weather insights and recommendations
+- 🤖 **AI-Powered Insights** - Google Gemini AI generates personalized weather insights and recommendations
 - 💾 **Saved Locations** - Save and manage multiple locations with favorite markers
 - 📊 **Weather History** - Track weather history for your saved locations
 - 📱 **Responsive Design** - Beautiful, mobile-friendly UI with Tailwind CSS
@@ -18,7 +18,7 @@ A modern, full-stack weather application built with React, TypeScript, Tailwind 
 - **State Management**: Zustand
 - **API Integration**: Axios
 - **Database**: Supabase (PostgreSQL)
-- **AI**: Claude API (Anthropic)
+- **AI**: Google Gemini API
 - **Weather Data**: OpenWeather API
 - **Deployment**: Vercel
 
@@ -27,7 +27,7 @@ A modern, full-stack weather application built with React, TypeScript, Tailwind 
 - Node.js 18+ and npm
 - Supabase account
 - OpenWeather API key
-- Anthropic API key (for Claude AI)
+- Google Gemini API key (for AI insights)
 - Google Places API key (optional, for location autocomplete)
 
 ## Environment Setup
@@ -54,7 +54,7 @@ NEXT_PUBLIC_OPENWEATHER_API_KEY=your_openweather_api_key
 NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=your_google_api_key
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-ANTHROPIC_API_KEY=your_anthropic_api_key
+NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY=your_google_gemini_api_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -76,10 +76,11 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 2. Generate an API key
 3. Add to `NEXT_PUBLIC_OPENWEATHER_API_KEY`
 
-### Claude AI (Anthropic)
-1. Create account at [console.anthropic.com](https://console.anthropic.com)
-2. Generate an API key
-3. Add to `ANTHROPIC_API_KEY` (kept secure on server side)
+### Google Gemini AI
+1. Go to [Google AI Studio](https://aistudio.google.com)
+2. Click "Get API Key"
+3. Create a new API key or use existing one
+4. Add to `NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY`
 
 ### Google Places API (Optional)
 1. Enable Maps and Places APIs in Google Cloud Console
@@ -205,7 +206,7 @@ git push origin main
    - `NEXT_PUBLIC_OPENWEATHER_API_KEY`
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `ANTHROPIC_API_KEY`
+   - `NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY`
    - `NEXT_PUBLIC_APP_URL` (your Vercel domain)
 
 ## Usage
@@ -246,8 +247,8 @@ git push origin main
 - Ensure RLS policies allow access if enabled
 
 ### AI insights not generating
-- Check Anthropic API key is valid
-- Verify API usage quota
+- Check Google Gemini API key is valid
+- Verify API usage quota and enable the Gemini API in Google Cloud
 - Check error logs in browser console
 
 ## Future Enhancements
@@ -275,4 +276,4 @@ For issues or questions, please open an issue on GitHub or contact the developme
 
 ---
 
-Built with ❤️ using React, TypeScript, and AI
+Built with ❤️ using React, TypeScript, Tailwind CSS, and Google Gemini AI

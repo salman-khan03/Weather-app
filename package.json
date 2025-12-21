@@ -19,7 +19,7 @@
     "axios": "^1.6.0",
     "zustand": "^4.4.0",
     "@supabase/supabase-js": "^2.38.0",
-    "anthropic": "^0.20.0",
+    "@google/generative-ai": "^0.3.0",
     "lucide-react": "^0.294.0",
     "clsx": "^2.0.0"
   },

@@ -1,9 +1,7 @@
-import { Anthropic } from '@anthropic-ai/sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import type { Weather, WeatherData } from '@/types'
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-})
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY)
 
 export const aiService = {
   generateWeatherInsight: async (
@@ -35,30 +33,19 @@ Please provide your response in the following JSON format:
 }
 `
 
-      const message = await client.messages.create({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 1024,
-        messages: [
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-      })
-
-      const content = message.content[0]
-      if (content.type !== 'text') {
-        throw new Error('Unexpected response type from Claude')
-      }
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+      const result = await model.generateContent(prompt)
+      const response = await result.response
+      const text = response.text()
 
       // Extract JSON from the response
-      const jsonMatch = content.text.match(/\{[\s\S]*\}/)
+      const jsonMatch = text.match(/\{[\s\S]*\}/)
       if (!jsonMatch) {
         throw new Error('Could not parse JSON from response')
       }
 
-      const result = JSON.parse(jsonMatch[0])
-      return result
+      const parsedResult = JSON.parse(jsonMatch[0])
+      return parsedResult
     } catch (error) {
       console.error('Error generating weather insight:', error)
       // Return a fallback response
@@ -90,23 +77,12 @@ Provide ONLY a JSON array of activity suggestions:
 ["activity 1", "activity 2", "activity 3"]
 `
 
-      const message = await client.messages.create({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 512,
-        messages: [
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-      })
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+      const result = await model.generateContent(prompt)
+      const response = await result.response
+      const text = response.text()
 
-      const content = message.content[0]
-      if (content.type !== 'text') {
-        return ['Check weather', 'Stay flexible', 'Plan ahead']
-      }
-
-      const jsonMatch = content.text.match(/\[[\s\S]*\]/)
+      const jsonMatch = text.match(/\[[\s\S]*\]/)
       if (!jsonMatch) {
         return ['Check weather', 'Stay flexible', 'Plan ahead']
       }

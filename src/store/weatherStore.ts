@@ -8,6 +8,8 @@ interface WeatherStore {
   isLoading: boolean
   error: string | null
   aiInsight: AIInsight | null
+  searchQuery: string
+  temperatureUnit: 'C' | 'F'
 
   // Weather actions
   setCurrentWeather: (data: WeatherData) => void
@@ -25,6 +27,14 @@ interface WeatherStore {
   // AI actions
   setAIInsight: (insight: AIInsight | null) => void
 
+  // Search actions
+  setSearchQuery: (query: string) => void
+  clearSearch: () => void
+
+  // Temperature unit actions
+  setTemperatureUnit: (unit: 'C' | 'F') => void
+  toggleTemperatureUnit: () => void
+
   // Reset
   reset: () => void
 }
@@ -36,6 +46,8 @@ const initialState = {
   isLoading: false,
   error: null,
   aiInsight: null,
+  searchQuery: '',
+  temperatureUnit: 'C' as 'C' | 'F',
 }
 
 export const useWeatherStore = create<WeatherStore>((set, get) => ({
@@ -81,6 +93,21 @@ export const useWeatherStore = create<WeatherStore>((set, get) => ({
   },
 
   setAIInsight: (insight: AIInsight | null) => set({ aiInsight: insight }),
+
+  setSearchQuery: (query: string) => set({ searchQuery: query }),
+  clearSearch: () => set({ searchQuery: '' }),
+
+  setTemperatureUnit: (unit: 'C' | 'F') => {
+    set({ temperatureUnit: unit })
+    localStorage.setItem('temperatureUnit', unit)
+  },
+  
+  toggleTemperatureUnit: () => {
+    const state = get()
+    const newUnit = state.temperatureUnit === 'C' ? 'F' : 'C'
+    set({ temperatureUnit: newUnit })
+    localStorage.setItem('temperatureUnit', newUnit)
+  },
 
   reset: () => set(initialState),
 }))

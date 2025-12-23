@@ -12,8 +12,8 @@ export default function WeatherDetails({ weather }: WeatherDetailsProps) {
     {
       icon: Wind,
       label: 'Wind Speed',
-      value: `${weather.current.wind_speed} m/s`,
-      direction: `${weather.current.wind_deg}°`,
+      value: `${weather.current.wind_kph} km/h`,
+      direction: `${weather.current.wind_dir}`,
     },
     {
       icon: Droplets,
@@ -23,12 +23,12 @@ export default function WeatherDetails({ weather }: WeatherDetailsProps) {
     {
       icon: Eye,
       label: 'Visibility',
-      value: `${(weather.current.visibility / 1000).toFixed(1)} km`,
+      value: `${weather.current.vis_km} km`,
     },
     {
       icon: Gauge,
       label: 'Pressure',
-      value: `${weather.current.pressure} mb`,
+      value: `${weather.current.pressure_mb} mb`,
     },
   ]
 
@@ -55,22 +55,16 @@ export default function WeatherDetails({ weather }: WeatherDetailsProps) {
       <div className="mt-6 pt-6 border-t border-white border-opacity-20 grid grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <p className="text-sm opacity-80">Cloud Coverage</p>
-          <p className="text-2xl font-bold">{weather.current.clouds}%</p>
+          <p className="text-2xl font-bold">{weather.current.cloud}%</p>
         </div>
         <div>
           <p className="text-sm opacity-80">UV Index</p>
-          <p className="text-2xl font-bold">{weather.current.uvi}</p>
+          <p className="text-2xl font-bold">{weather.current.uv}</p>
         </div>
-        {weather.current.rain && (
+        {weather.current.precip_mm > 0 && (
           <div>
-            <p className="text-sm opacity-80">Rainfall</p>
-            <p className="text-2xl font-bold">{weather.current.rain} mm</p>
-          </div>
-        )}
-        {weather.current.snow && (
-          <div>
-            <p className="text-sm opacity-80">Snowfall</p>
-            <p className="text-2xl font-bold">{weather.current.snow} mm</p>
+            <p className="text-sm opacity-80">Precipitation</p>
+            <p className="text-2xl font-bold">{weather.current.precip_mm} mm</p>
           </div>
         )}
       </div>

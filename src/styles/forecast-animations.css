@@ -1,0 +1,186 @@
+/* Google Weather-Style Forecast Icon Animations */
+
+/* Base animation for all weather icons in forecasts */
+.forecast-icon-base {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Sunny/Clear Weather Animation - Gentle Pulsing Glow */
+@keyframes sunny-forecast {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.8));
+  }
+}
+
+.forecast-sunny {
+  animation: sunny-forecast 6s ease-in-out infinite;
+}
+
+/* Cloudy Weather Animation - Gentle Drift */
+@keyframes cloudy-forecast {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  33% {
+    transform: translateX(3px) translateY(-2px);
+  }
+  66% {
+    transform: translateX(-3px) translateY(2px);
+  }
+}
+
+.forecast-cloudy {
+  animation: cloudy-forecast 5s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.3));
+}
+
+/* Rainy Weather Animation - Gentle Bounce */
+@keyframes rainy-forecast {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.forecast-rainy {
+  animation: rainy-forecast 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+}
+
+/* Snowy Weather Animation - Gentle Rotate & Float */
+@keyframes snowy-forecast {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(90deg);
+  }
+}
+
+.forecast-snowy {
+  animation: snowy-forecast 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.7));
+}
+
+/* Thunder Weather Animation - Subtle Flash */
+@keyframes thunder-forecast {
+  0%, 90%, 100% {
+    filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.5));
+  }
+  93%, 97% {
+    filter: drop-shadow(0 0 20px rgba(234, 179, 8, 1));
+  }
+}
+
+.forecast-thunder {
+  animation: thunder-forecast 3s ease-in-out infinite;
+}
+
+/* Foggy/Misty Weather Animation - Gentle Fade */
+@keyframes foggy-forecast {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}
+
+.forecast-foggy {
+  animation: foggy-forecast 4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.4));
+}
+
+/* Partly Cloudy Animation - Combined Movement */
+@keyframes partly-cloudy-forecast {
+  0%, 100% {
+    transform: translateX(0) scale(1);
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
+  }
+  50% {
+    transform: translateX(2px) scale(1.03);
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6));
+  }
+}
+
+.forecast-partly-cloudy {
+  animation: partly-cloudy-forecast 4s ease-in-out infinite;
+}
+
+/* Windy Weather Animation - Gentle Sway */
+@keyframes windy-forecast {
+  0%, 100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  25% {
+    transform: rotate(5deg) translateX(3px);
+  }
+  75% {
+    transform: rotate(-5deg) translateX(-3px);
+  }
+}
+
+.forecast-windy {
+  animation: windy-forecast 2.5s ease-in-out infinite;
+}
+
+/* Hover Enhancement for All Forecast Icons */
+.forecast-icon-wrapper:hover .weather-icon-animated {
+  animation-play-state: paused;
+  transform: scale(1.15) translateY(-3px);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Staggered Animation Delay for Sequential Cards */
+.forecast-card-animated:nth-child(1) .weather-icon-animated { animation-delay: 0s; }
+.forecast-card-animated:nth-child(2) .weather-icon-animated { animation-delay: 0.1s; }
+.forecast-card-animated:nth-child(3) .weather-icon-animated { animation-delay: 0.2s; }
+.forecast-card-animated:nth-child(4) .weather-icon-animated { animation-delay: 0.3s; }
+.forecast-card-animated:nth-child(5) .weather-icon-animated { animation-delay: 0.4s; }
+.forecast-card-animated:nth-child(6) .weather-icon-animated { animation-delay: 0.5s; }
+.forecast-card-animated:nth-child(7) .weather-icon-animated { animation-delay: 0.6s; }
+
+/* Smooth Entry Animation */
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.forecast-card-animated {
+  animation: fade-slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+/* Temperature Text Hover Effect */
+.forecast-card-animated:hover .forecast-temp {
+  transform: scale(1.05);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Condition Text Subtle Animation */
+.forecast-condition {
+  transition: all 0.3s ease;
+}
+
+.forecast-card-animated:hover .forecast-condition {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}

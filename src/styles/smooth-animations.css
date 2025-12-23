@@ -1,0 +1,362 @@
+/* ============================================
+   SMOOTH ANIMATIONS - Google Weather Style
+   ============================================ */
+
+/* Global smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Page transitions */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: page-fade-in 0.4s ease-out;
+}
+
+/* Card hover effects - subtle and smooth */
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Button animations */
+.btn-primary,
+.btn-secondary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.96);
+}
+
+/* Ripple effect for buttons */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.btn-primary::after,
+.btn-secondary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.btn-primary:active::after,
+.btn-secondary:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+/* Input focus animations */
+.input-field {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-field:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading spinner - smooth rotation */
+@keyframes smooth-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: smooth-spin 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Skeleton loading animation */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Modal animations */
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal {
+  animation: modal-fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Toast notification animations */
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toast-slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-exit {
+  animation: toast-slide-out 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* List item stagger animation */
+@keyframes list-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.list-item {
+  animation: list-fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.list-item:nth-child(1) { animation-delay: 0s; }
+.list-item:nth-child(2) { animation-delay: 0.05s; }
+.list-item:nth-child(3) { animation-delay: 0.1s; }
+.list-item:nth-child(4) { animation-delay: 0.15s; }
+.list-item:nth-child(5) { animation-delay: 0.2s; }
+.list-item:nth-child(6) { animation-delay: 0.25s; }
+.list-item:nth-child(7) { animation-delay: 0.3s; }
+.list-item:nth-child(8) { animation-delay: 0.35s; }
+
+/* Search bar animation */
+.search-expand {
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Weather card flip animation */
+@keyframes card-flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.card-flip {
+  animation: card-flip 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth opacity transitions */
+.fade-enter {
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-exit-active {
+  opacity: 0;
+}
+
+/* Smooth scale transitions */
+.scale-enter {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scale-enter-active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Icon pulse on update */
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.icon-update {
+  animation: icon-pulse 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Temperature change animation */
+@keyframes temp-change {
+  0%, 100% {
+    color: rgba(255, 255, 255, 1);
+  }
+  50% {
+    color: rgba(251, 191, 36, 1);
+  }
+}
+
+.temp-update {
+  animation: temp-change 0.6s ease-in-out;
+}
+
+/* Smooth border animations */
+.border-animate {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: border-slide 2s ease-in-out infinite;
+}
+
+@keyframes border-slide {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Smooth color transitions */
+.color-transition {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Elastic bounce effect */
+@keyframes elastic-bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-on-load {
+  animation: elastic-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Microinteraction: Success checkmark */
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.checkmark-animate {
+  stroke-dasharray: 100;
+  animation: checkmark 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

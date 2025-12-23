@@ -1,13 +1,16 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import WeatherBackground from '@/components/WeatherBackground'
+import { Providers } from '@/components/Providers'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Weather App',
   description: 'AI-powered weather forecasting with smart insights',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -18,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen bg-gradient-primary">
-          {children}
-        </div>
+        <Providers>
+          <WeatherBackground />
+          <div className="min-h-screen relative">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   )
